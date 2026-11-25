@@ -18,10 +18,10 @@
 </p>
 
 <p align="center">
-  <img src="Website/assets/img/home.jpg" width="190" alt="Home on iPhone">
-  <img src="Website/assets/img/player.jpg" width="190" alt="The player on iPhone">
-  <img src="Website/assets/img/radio.jpg" width="190" alt="Tune In on iPhone">
-  <img src="docs/screenshots/android-home.png" width="190" alt="Home on Android">
+  <img src="docs/screenshots/iphone-home.jpg" width="190" alt="Home on iPhone">
+  <img src="docs/screenshots/iphone-player.jpg" width="190" alt="The player on iPhone">
+  <img src="docs/screenshots/iphone-tune-in.jpg" width="190" alt="Tune In on iPhone">
+  <img src="docs/screenshots/android-home-new.png" width="190" alt="Home on Android">
 </p>
 
 ---
