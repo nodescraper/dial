@@ -15,7 +15,19 @@ Both are built by scheduled tasks in the small hours (**Refresh Dial Discovery**
 
 ## Install
 
-You need the **.NET 10 SDK** on the machine where you build.
+The easy way: add Dial's plugin repository to your server, then install it from the catalog. No build needed.
+
+1. In Jellyfin, open **Dashboard → Plugins → Repositories → Add repository**.
+2. Name it **Dial** and paste this address:
+
+   ```
+   https://raw.githubusercontent.com/nodescraper/dial/main/manifest.json
+   ```
+
+3. Open **Dashboard → Plugins → Catalog**, find **Dial**, and click **Install**.
+4. Restart Jellyfin. **Dial** should show as *Active* under **Dashboard → Plugins**.
+
+**Doing it by hand instead** (for example, if you want to build the plugin yourself) needs the **.NET 10 SDK**:
 
 ```bash
 git clone https://github.com/nodescraper/dial.git
@@ -31,7 +43,7 @@ mkdir -p <config>/plugins/Dial_0.1.0.0
 cp Plugin/bin/Release/net10.0/Dial.Plugin.dll <config>/plugins/Dial_0.1.0.0/
 ```
 
-Restart Jellyfin. In **Dashboard → Plugins** you should see **Dial** as *Active*. (The message "An error occurred while getting the plugin details from the repository" is normal for a plugin installed by hand.)
+Restart Jellyfin. (The message "An error occurred while getting the plugin details from the repository" is normal for a plugin installed by hand.)
 
 ## Settings
 
@@ -91,6 +103,5 @@ Code lives in `Plugin/`: `Api/` (endpoints), `Services/` (discovery, mixtapes, t
 
 ## Roadmap
 
-- A plugin repository manifest, so it installs from the Jellyfin catalog.
 - Mood mixtapes made on the server too (today the app makes them with AudioMuse).
 - Marlo's vibe drift on the server.

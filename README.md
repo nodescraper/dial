@@ -126,7 +126,7 @@ The **Dial plugin** is optional. It powers Discovery and the mixtapes, and build
    | **LRCLIB Lyrics** | Synced lyrics for songs that have none |
    | **Dial** (this repo, `Plugin/`) | Discovery and the made-for-you mixtapes |
 
-3. **Install the Dial plugin.** Build it with `dotnet build -c Release Plugin` and copy the DLL into your server's plugins folder. The steps are in [docs/PLUGIN.md](docs/PLUGIN.md).
+3. **Install the Dial plugin.** In Jellyfin, go to **Dashboard → Plugins → Repositories**, add `https://raw.githubusercontent.com/nodescraper/dial/main/manifest.json`, then install **Dial** from the **Catalog** and restart. The steps, and the manual build, are in [docs/PLUGIN.md](docs/PLUGIN.md).
 4. **Build the app.** [docs/BUILD.md](docs/BUILD.md) covers iPhone, iPad and Mac (XcodeGen and Xcode), Android and Android TV.
 5. Open the app, sign in with your Jellyfin address and account (or Quick Connect), and play something.
 
