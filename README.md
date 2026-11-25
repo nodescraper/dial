@@ -5,8 +5,8 @@
 <h1 align="center">Dial</h1>
 
 <p align="center">
-  <b>A music player for people who know their music.</b><br>
-  Your own library, from your own Jellyfin server, in an Apple&nbsp;Music style, with a DJ that talks like a radio host, mixtapes made from how <i>you</i> listen, and a Discovery page built only from the artists you already own, on iPhone, iPad, Mac, Android and Android&nbsp;TV.
+  <b>A music player for people who already own their music.</b><br>
+  Plays your library from your own Jellyfin server, with a radio that drifts by sound, lyrics, a Discovery page built from the artists you own, and playback shared across your devices. iPhone, iPad, Mac, Android and Android&nbsp;TV.
 </p>
 
 <p align="center">
@@ -18,57 +18,77 @@
 </p>
 
 <p align="center">
-  <img src="Website/assets/img/home.jpg" width="190" alt="Home">
-  <img src="Website/assets/img/player.jpg" width="190" alt="Player">
-  <img src="Website/assets/img/radio.jpg" width="190" alt="Radio">
+  <img src="Website/assets/img/home.jpg" width="190" alt="Home on iPhone">
+  <img src="Website/assets/img/player.jpg" width="190" alt="The player on iPhone">
+  <img src="Website/assets/img/radio.jpg" width="190" alt="Tune In on iPhone">
+  <img src="docs/screenshots/android-home.png" width="190" alt="Home on Android">
 </p>
 
 ---
 
 ## Get Dial
 
-<p align="center">
-  <a href="https://testflight.apple.com/join/1rFhUGK6"><img alt="iPhone, iPad and Mac: join the TestFlight beta" src="https://img.shields.io/badge/iPhone%20%C2%B7%20iPad%20%C2%B7%20Mac-join%20TestFlight-0D96F6?style=for-the-badge&logo=apple&logoColor=white"></a>
-  <a href="https://github.com/nodescraper/dial/releases/tag/android-v0.1"><img alt="Android phone: download the APK" src="https://img.shields.io/badge/Android%20phone-download%20APK-3DDC84?style=for-the-badge&logo=android&logoColor=white"></a>
-  <a href="https://github.com/nodescraper/dial/releases/tag/tv-v0.1"><img alt="Android TV: download the APK" src="https://img.shields.io/badge/Android%20TV-download%20APK-3DDC84?style=for-the-badge&logo=androidtv&logoColor=white"></a>
-</p>
-
-| Platform | Where |
+| Platform | How to get it |
 |---|---|
-| Android phone | [Dial for Android 0.1](https://github.com/nodescraper/dial/releases/tag/android-v0.1) |
-| Android TV | [Dial for Android TV 0.1](https://github.com/nodescraper/dial/releases/tag/tv-v0.1) (all releases are under [Releases](https://github.com/nodescraper/dial/releases)) |
 | iPhone, iPad and Mac | [Join the TestFlight beta](https://testflight.apple.com/join/1rFhUGK6) |
-| Jellyfin server plugin | Build it from [`Plugin/`](Plugin), see [the plugin guide](docs/PLUGIN.md) |
+| Android phone | Build from [`Android/`](Android), or install the APK from [Releases](https://github.com/nodescraper/dial/releases) |
+| Android TV | Build from [`AndroidTV/DialTV`](AndroidTV/DialTV), or install the APK from [Releases](https://github.com/nodescraper/dial/releases) |
+| Jellyfin server plugin | Build from [`Plugin/`](Plugin). See [the plugin guide](docs/PLUGIN.md) |
 
-## Why Dial
+## Key features
 
-Streaming services are built to sell you *more* music. If you have spent years collecting, buying and tagging your own library, you want something different: a player that makes that library feel alive.
+### Radio that listens to the sound
 
-- **Nothing to discover that you did not choose.** Discovery follows the artists you own: their new releases, upcoming releases with a calendar, who their fans also play, and when they are on tour near you. Follow an artist and get a notification on release day.
-- **Mixtapes from your own listening.** Three Daily Mixes (each a different kind of music, many artists in each, built from your whole library and from who you play together), On Repeat, Rewind, Deep Cuts and a Time Capsule, refreshed every day and the same on every device.
-- **A DJ with taste.** Marlo holds one vibe for a few songs, then drifts to a neighbouring one. It knows your stats, introduces songs like a radio host, and lets the next song in only for the last seconds of a long line.
-- **Your server, your data.** Everything plays from Jellyfin. Nothing about your listening leaves your network, except the artist names and IDs that Discovery looks up (see [Privacy](docs/PLUGIN.md#privacy)).
+- **Marlo, the DJ.** Pick a vibe with one tap. Marlo plays a few songs from one mood, then drifts to a neighbouring one, and speaks a short line when it changes direction. It knows your listening stats and works from your library.
+- **Your Sound.** Songs that match the sound of what you play most, using the sound analysis from AudioMuse.
+- **Radio from any song.** Tap one song outside an album and it plays first, followed by the songs that sound closest to it, in a random order that keeps the closest ones near the front. Albums, playlists and mixtapes keep their own order.
+- **Your Mix, Favorites Mix, mood, genre and decade stations**, plus thousands of live stations, Christmas and seasonal live radio, and Lofi Girl.
 
-## What is in it
+### Discovery built from what you own
 
-| | |
-|---|---|
-| **Library** | Artists, albums, songs, genres, decades, favourites, playlists you can rename and reorder, an A to Z index, downloads for offline. |
-| **Search** | Forgiving (typos, accents, word order), results as shelves of covers, and *Beyond Your Library*: artists, albums and songs you do not have, with the same artist page as the ones you own. |
-| **Player** | Full-screen player with synced lyrics, queue, crossfade, volume leveling, sleep timer, AirPlay, lock screen controls, long titles that scroll, a quiet tag for the mix or station that is playing, and a swipe (or X on Mac) to close it. It picks up the last song after a restart. |
-| **Radio (Tune In)** | Your Mix, Favorites Mix, *Your Sound* (songs that match what you play most, with AudioMuse), mood stations, genre and decade stations, Christmas and seasonal live radio, thousands of live stations including Lofi Girl. Pull down to refresh. |
-| **Marlo, the DJ** | Pick a vibe with a tap. A getting-ready screen shows what it is doing; it knows your listening stats, speaks long lines on their own and changes direction fast. Apple only. |
-| **Mixtapes** | Made on your server once a day from your play counts, favourites and history. Forgotten songs come back first. |
-| **Discovery** | A hero of the biggest news, new releases, a release calendar, upcoming releases, *You Might Also Like*, and **Following**: follow an artist and get a notification the day they release, with a link to Spotify. |
-| **Artist pages** | Popular (what the world plays, from ListenBrainz), your top songs, the discography, similar artists, Follow. |
-| **Connect** | Start music on one of your devices and play it on another. A device that went quiet is let go, and pressing play takes over from it. |
-| **Apps** | iPhone, iPad and Mac (Catalyst) in `Dial/`; [Android](Android) and [Android TV](AndroidTV) in their own folders, with the same Discovery, search, mixtapes, follow and connect. |
+- **New from your artists**: the newest releases from the artists in your library.
+- **Calendar and Following.** Upcoming releases with dates. Follow an artist and get a notification on release day.
+- **On tour.** A timeline of concerts near you, by artists you own (Ticketmaster, optional).
+- **Beyond your library.** Search finds artists, albums and songs you do not have yet, and they can go on a wishlist that your server keeps for every device.
 
-<p align="center">
-  <img src="docs/screenshots/discovery.jpg" width="260" alt="Discovery: new releases from your artists and who their fans also play">
-  &nbsp;
-  <img src="docs/screenshots/on-tour.jpg" width="260" alt="On Tour: a timeline of upcoming concerts by artists you own">
-</p>
+### Mixtapes from how you listen
+
+- Three Daily Mixes, On Repeat, Rewind, Deep Cuts, a Time Capsule, and mood, decade and genre mixtapes. Made once a day on your server, so every device shows the same thing.
+- Songs you heard in the last three days rest. Forgotten songs come back first.
+
+### Lyrics
+
+- Synced lyrics that follow the song. Tap a line to jump to it.
+- Lyrics come from your Jellyfin server first. For songs without any, LRCLIB fills in.
+
+### Player
+
+- Full-screen player with an equalizer (ten bands, presets such as Bass Boost, applied to everything including live radio), volume leveling, a sleep timer, AirPlay and lock screen controls.
+- A queue you can reorder, shuffle and repeat.
+- Dial remembers your last song and picks it up after a restart.
+
+### Your stats
+
+- **Your Stats**: your top artists, songs and listening time, with a card for your number one artist.
+- **Library Stats**: your library in numbers. Size, formats and bitrates, lossless share, decades and genres, never-played songs, and missing covers or tags.
+- **Export Library**: artists, albums and tracks as three CSV files in one zip.
+
+### Playback across your devices
+
+- **Connect** shows your devices. Start a song on one and continue it on another, and pressing play takes over from a device that went quiet.
+
+### Android TV
+
+- Built for the couch: a remote-friendly interface with a Home screen, your Library, Tune In radio, search, album and artist pages, and the full player.
+- **Dial as a screensaver.** While music plays and the TV idles, the screen shows the cover, title and artist.
+- The same wishlist and stats as the phone, read-only where a screen is better for browsing.
+- The same radio from any song as the phone.
+- Install from [`AndroidTV/DialTV`](AndroidTV/DialTV) (see [docs/BUILD.md](docs/BUILD.md)).
+
+### Design
+
+- Album covers appear in a CD jewel case, with the spine and the plastic reflections, and in a flat square where a case would not fit (Discovery, Tune In, the mixtapes).
+- Apple-style on iPhone, iPad and Mac. Material on Android, with the same layout and the same colours from each album's artwork.
 
 ## How it fits together
 
@@ -84,62 +104,63 @@ flowchart LR
   P --- J
   J --- M[AudioMuse AI<br/>sound analysis]
   J --- R[Playback Reporting<br/>exact play history]
+  J --- L[LRCLIB Lyrics<br/>lyrics when none are tagged]
   P -->|artist IDs| MB[MusicBrainz]
   P -->|similar artists| LB[ListenBrainz]
   P -->|photos| WD[Wikidata]
   P -->|concerts, optional| TM[Ticketmaster]
 ```
 
-The **Dial plugin** is optional but is what powers Discovery and the mixtapes. It builds them once a day on your server, so every device shows the same thing instantly. Without it, those two parts are simply hidden and everything else works. See [docs/PLUGIN.md](docs/PLUGIN.md) and [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+The **Dial plugin** is optional. It powers Discovery and the mixtapes, and builds them once a day on your server. Without it, those parts are hidden and everything else still works. See [docs/PLUGIN.md](docs/PLUGIN.md) and [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ## Quick start
 
-1. **Have a Jellyfin server with music in it.** New to this? Start with [docs/SERVER-SETUP.md](docs/SERVER-SETUP.md). Your library needs good tags: see [Digitising your music](docs/DIGITISING.md).
-2. **Install the helpers you want** (all optional, each unlocks something):
+1. **Have a Jellyfin server with music in it.** New to this? Start with [docs/SERVER-SETUP.md](docs/SERVER-SETUP.md). Good tags matter: see [Digitising your music](docs/DIGITISING.md).
+2. **Install the helpers you want.** Each one unlocks something:
+
    | Jellyfin plugin | What it gives Dial |
    |---|---|
    | **MusicBrainz** metadata (built in) | The artist IDs Discovery depends on |
-   | **Playback Reporting** | The *On Repeat* mixtape and exact play history |
-   | **AudioMuse AI** | Mood mixtapes, sound search, Marlo's vibes |
+   | **Playback Reporting** | The On Repeat mixtape and exact play history |
+   | **AudioMuse AI** | Your Sound, sound search, and Marlo's vibes |
    | **LRCLIB Lyrics** | Synced lyrics for songs that have none |
    | **Dial** (this repo, `Plugin/`) | Discovery and the made-for-you mixtapes |
-3. **Install the Dial plugin:** build it with `dotnet build -c Release Plugin` and copy the DLL into your server's plugins folder. Step by step in [docs/PLUGIN.md](docs/PLUGIN.md).
-4. **Build the app:** [docs/BUILD.md](docs/BUILD.md) covers iPhone, iPad and Mac (XcodeGen + Xcode), Android and Android TV.
+
+3. **Install the Dial plugin.** Build it with `dotnet build -c Release Plugin` and copy the DLL into your server's plugins folder. The steps are in [docs/PLUGIN.md](docs/PLUGIN.md).
+4. **Build the app.** [docs/BUILD.md](docs/BUILD.md) covers iPhone, iPad and Mac (XcodeGen and Xcode), Android and Android TV.
 5. Open the app, sign in with your Jellyfin address and account (or Quick Connect), and play something.
-
-## Digitise your own music
-
-Dial is for music you own. Ripping your CDs, capturing vinyl and tagging it properly is what makes everything above work well. There is a full guide: **[docs/DIGITISING.md](docs/DIGITISING.md)** (CDs, vinyl, cassettes, DRM-free stores, tagging with MusicBrainz Picard, folder layout, formats, ReplayGain, backups).
-
-The short version:
-
-- Rip CDs to **FLAC** with a verified ripper (XLD, Exact Audio Copy, whipper).
-- Tag everything with **MusicBrainz Picard** so every file carries its MusicBrainz IDs.
-- Keep one folder per album: `Artist/Album (Year)/01 Title.flac`, with `cover.jpg`.
-- Back it up (3 copies, 2 kinds of media, 1 elsewhere) before you celebrate.
 
 ## Tips
 
-- **Discovery is empty?** Make sure the MusicBrainz metadata provider is enabled for your music library and your artists have MusicBrainz IDs, then run *Refresh Dial Discovery* in the Jellyfin dashboard (Scheduled Tasks).
-- **Mixtapes feel samey?** They rest what you heard in the last three days, favour songs you have not played in a while and count songs you keep skipping for less. The three Daily Mixes group your artists by what you play together, so the more you listen the better they split. Press **Regenerate mixtapes** on the plugin's settings page to rebuild them now.
-- **Marlo does not drift?** It needs AudioMuse's clustering run at least once (the `…_automatic` playlists in Jellyfin are its vibes).
+- **Discovery is empty?** Turn on the MusicBrainz metadata provider for your music library, make sure your artists have MusicBrainz IDs, then run *Refresh Dial Discovery* in the Jellyfin dashboard (Scheduled Tasks).
+- **Mixtapes feel samey?** They rest what you heard in the last three days and favour songs you have not played in a while. Press **Regenerate mixtapes** on the plugin's settings page to rebuild them now.
+- **Marlo does not drift?** It needs AudioMuse's clustering to run at least once. The `…_automatic` playlists in Jellyfin are its vibes.
 - **Concerts:** get a free key at [developer.ticketmaster.com](https://developer.ticketmaster.com/), then add it and a country code on the Dial plugin's settings page.
 - **Away from home:** put Jellyfin behind a reverse proxy with HTTPS, or use a private network such as Tailscale. Do not expose it bare.
+
+## Digitise your own music
+
+Dial is for music you own. Ripping CDs, capturing vinyl and tagging it properly is what makes everything above work well. The full guide is **[docs/DIGITISING.md](docs/DIGITISING.md)**.
+
+- Rip CDs to **FLAC** with a verified ripper (XLD, Exact Audio Copy, whipper).
+- Tag everything with **MusicBrainz Picard**, so every file carries its MusicBrainz IDs.
+- Keep one folder per album: `Artist/Album (Year)/01 Title.flac`, with a `cover.jpg`.
+- Back it up: three copies, two kinds of media, one of them off site.
 
 ## Repository layout
 
 | Path | What |
 |---|---|
-| `Dial/` | The iOS, iPadOS and Mac (Catalyst) app, SwiftUI |
-| `Plugin/` | The Jellyfin server plugin that makes Discovery and the mixtapes (C#, .NET 10) |
-| `Android/` | The Android app (Kotlin, Jetpack Compose) |
-| `AndroidTV/` | The Android TV app, sharing the Android data layer |
+| `Dial/` | The iPhone, iPad and Mac (Catalyst) app, SwiftUI |
+| `Android/` | The Android phone app (Kotlin, Jetpack Compose) |
+| `AndroidTV/` | The Android TV app (`DialTV`) and the shared Android code it builds on (`DialAndroid`) |
+| `Plugin/` | The Jellyfin server plugin for Discovery and the mixtapes (C#, .NET) |
 | `Design/`, `Website/` | App icon sources and the project website |
 | `docs/` | Guides: [server](docs/SERVER-SETUP.md), [plugin](docs/PLUGIN.md), [digitising](docs/DIGITISING.md), [build](docs/BUILD.md), [architecture](docs/ARCHITECTURE.md) |
 
 ## Status
 
-Dial is a personal project that is growing into something shareable. It is used daily against a real library, but expect rough edges, and note that it targets **Jellyfin 12** (the plugin is built against 12.x). Issues and ideas are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md).
+Dial is a personal project that is growing into something shareable. It runs daily against a real library, but expect rough edges. It targets **Jellyfin 12**. Issues and ideas are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Credits
 
@@ -148,14 +169,3 @@ Dial stands on open data and open software: [Jellyfin](https://jellyfin.org), [A
 ## License
 
 [PolyForm Noncommercial 1.0.0](LICENSE): free to read, build and use for yourself, not to sell. Album artwork shown in screenshots belongs to its owners.
-
-## What is where
-
-| Folder | What |
-|---|---|
-| `Dial/`, `DialWidget/`, `Shared/`, `project.yml` | iPhone, iPad and Mac app (and the Home Screen widget) |
-| `Android/` | Android phone app (and Android Auto) |
-| `AndroidTV/` | Android TV app (`DialTV`) and the shared Android code it builds on (`DialAndroid`) |
-| `Plugin/` | The Jellyfin server plugin (Discovery and mixtapes) |
-| `Website/` | The plain link page at dialplayer.site (published from the `website` branch) |
-| `docs/` | Guides: build, server setup, plugin, store, CarPlay |
