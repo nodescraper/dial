@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024"><defs><style>/*FONTS*/</style></defs><rect width="1024" height="1024" fill="#140d08"/><g transform="translate(112 254) scale(1.0)">
+  <rect width="800" height="516" rx="48" fill="#d9cbb0"/>
+  <g fill="#2a1a10" fill-opacity=".35"><circle cx="40" cy="40" r="14"/><circle cx="760" cy="40" r="14"/><circle cx="40" cy="476" r="14"/><circle cx="760" cy="476" r="14"/></g>
+  <line x1="80" y1="142" x2="720" y2="142" stroke="#2a1a10" stroke-opacity=".15" stroke-width="6"/>
+  <path d="M88 104 C 260 78, 470 116, 712 86" fill="none" stroke="#26357a" stroke-width="22" stroke-linecap="round"/>
+  <rect y="178" width="800" height="48" fill="#eaa83a"/>
+  <rect y="226" width="800" height="48" fill="#e66f2c"/>
+  <rect y="274" width="800" height="48" fill="#c8402a"/>
+  <rect x="184" y="150" width="432" height="200" rx="100" fill="#2a1a10"/>
+  <circle cx="292" cy="250" r="80" fill="#6b4528"/>
+  <circle cx="508" cy="250" r="58" fill="#6b4528"/>
+  <circle cx="292" cy="250" r="40" fill="#d9cbb0"/><rect x="286" y="210" width="12" height="18" fill="#2a1a10" transform="rotate(0 292 250)"/><rect x="286" y="210" width="12" height="18" fill="#2a1a10" transform="rotate(60 292 250)"/><rect x="286" y="210" width="12" height="18" fill="#2a1a10" transform="rotate(120 292 250)"/><rect x="286" y="210" width="12" height="18" fill="#2a1a10" transform="rotate(180 292 250)"/><rect x="286" y="210" width="12" height="18" fill="#2a1a10" transform="rotate(240 292 250)"/><rect x="286" y="210" width="12" height="18" fill="#2a1a10" transform="rotate(300 292 250)"/><circle cx="508" cy="250" r="40" fill="#d9cbb0"/><rect x="502" y="210" width="12" height="18" fill="#2a1a10" transform="rotate(0 508 250)"/><rect x="502" y="210" width="12" height="18" fill="#2a1a10" transform="rotate(60 508 250)"/><rect x="502" y="210" width="12" height="18" fill="#2a1a10" transform="rotate(120 508 250)"/><rect x="502" y="210" width="12" height="18" fill="#2a1a10" transform="rotate(180 508 250)"/><rect x="502" y="210" width="12" height="18" fill="#2a1a10" transform="rotate(240 508 250)"/><rect x="502" y="210" width="12" height="18" fill="#2a1a10" transform="rotate(300 508 250)"/>
+  <path d="M168 516 L204 408 H596 L632 516 Z" fill="#c2b495"/>
+  <g fill="#2a1a10"><circle cx="268" cy="472" r="16"/><circle cx="532" cy="472" r="16"/><rect x="356" y="460" width="24" height="24" rx="4"/><rect x="420" y="460" width="24" height="24" rx="4"/></g>
+</g></svg>

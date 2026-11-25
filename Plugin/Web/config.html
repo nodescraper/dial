@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Dial</title></head>
+<body>
+<div id="DialConfigPage" data-role="page" class="page type-interior pluginConfigurationPage" data-require="emby-input,emby-button,emby-checkbox">
+  <div data-role="content">
+    <div class="content-primary">
+      <h3>What Dial needs and uses</h3>
+      <p>Dial's apps get Discovery and mixtapes from this plugin. Here is everything it builds on and what each part gives the app. Green is working, grey is off or missing.</p>
+      <div id="DialStatus"></div>
+      <div style="margin:1.5em 0">
+        <h3>Mixtapes</h3>
+        <p>Daily Mix 1-3, On Repeat, Rewind and the rest are made every night at 04:30. Make new ones for everyone now:</p>
+        <button is="emby-button" type="button" class="raised" id="DialRegenerate"><span>Regenerate mixtapes now</span></button>
+        <span id="DialRegenerateResult" style="margin-left:1em;opacity:.8"></span>
+      </div>
+      <form id="DialConfigForm">
+        <h2>Dial</h2>
+        <p>Discovery and mixtapes for the Dial app. Concerts use the free Ticketmaster Discovery API.</p>
+        <div class="checkboxContainer checkboxContainer-withDescription">
+          <label class="emby-checkbox-label">
+            <input is="emby-checkbox" type="checkbox" id="ConcertsEnabled" />
+            <span>Show upcoming concerts</span>
+          </label>
+        </div>
+        <div class="inputContainer">
+          <label class="inputLabel inputLabelUnfocused" for="TicketmasterKey">Ticketmaster API key</label>
+          <input is="emby-input" type="text" id="TicketmasterKey" />
+          <div class="fieldDescription">Free at developer.ticketmaster.com. Leave empty to turn concerts off.</div>
+        </div>
+        <div class="inputContainer">
+          <label class="inputLabel inputLabelUnfocused" for="CountryCode">Country code</label>
+          <input is="emby-input" type="text" id="CountryCode" maxlength="2" />
+          <div class="fieldDescription">Two letters, e.g. HU or US. Only concerts in this country are shown.</div>
+        </div>
+        <button is="emby-button" type="submit" class="raised button-submit block"><span>Save</span></button>
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript">
+    (function () {
+      var pluginId = 'b5c1f0a2-7d3e-4c58-9a41-2f6e8d0c1b73';
+      var page = document.querySelector('#DialConfigPage');
+      page.addEventListener('pageshow', function () {
+        Dashboard.showLoadingMsg();
+        ApiClient.fetch({ url: ApiClient.getUrl('Dial/Status'), type: 'GET', dataType: 'json' }).then(function (s) {
+          var html = '';
+          s.groups.forEach(function (g) {
+            html += '<h4 style="margin:1.2em 0 .4em">' + g.title + '</h4><table style="width:100%;border-collapse:collapse">';
+            g.rows.forEach(function (f) {
+              html += '<tr style="border-bottom:1px solid rgba(128,128,128,.3)">'
+                + '<td style="padding:.6em;white-space:nowrap;vertical-align:top"><span style="color:' + (f.active ? '#4caf50' : '#999') + '">&#9679;</span> ' + f.name + '</td>'
+                + '<td style="padding:.6em;vertical-align:top">' + f.provides
+                + (f.note ? '<div style="opacity:.65;font-size:.9em;margin-top:.2em">' + f.note + '</div>' : '') + '</td></tr>';
+            });
+            html += '</table>';
+          });
+          page.querySelector('#DialStatus').innerHTML = html;
+        });
+        ApiClient.getPluginConfiguration(pluginId).then(function (c) {
+          page.querySelector('#ConcertsEnabled').checked = c.ConcertsEnabled;
+          page.querySelector('#TicketmasterKey').value = c.TicketmasterKey || '';
+          page.querySelector('#CountryCode').value = c.CountryCode || '';
+          Dashboard.hideLoadingMsg();
+        });
+      });
+      var regen = page.querySelector('#DialRegenerate');
+      var regenText = page.querySelector('#DialRegenerateResult');
+      regen.addEventListener('click', function () {
+        regen.disabled = true;
+        regenText.textContent = 'Making new mixtapes\u2026';
+        ApiClient.ajax({ type: 'POST', url: ApiClient.getUrl('Dial/Mixtapes/Refresh') }).then(function () {
+          var tries = 0;
+          (function poll() {
+            ApiClient.fetch({ url: ApiClient.getUrl('Dial/Mixtapes/Status'), type: 'GET', dataType: 'json' }).then(function (s) {
+              if (s.running && tries++ < 120) { setTimeout(poll, 2000); }
+              else { regen.disabled = false; regenText.textContent = 'Done. Pull down to refresh in the app.'; }
+            });
+          })();
+        }, function () { regen.disabled = false; regenText.textContent = 'Only administrators can do this.'; });
+      });
+      page.querySelector('#DialConfigForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        Dashboard.showLoadingMsg();
+        ApiClient.getPluginConfiguration(pluginId).then(function (c) {
+          c.ConcertsEnabled = page.querySelector('#ConcertsEnabled').checked;
+          c.TicketmasterKey = page.querySelector('#TicketmasterKey').value.trim();
+          c.CountryCode = page.querySelector('#CountryCode').value.trim().toUpperCase();
+          ApiClient.updatePluginConfiguration(pluginId, c).then(function (r) {
+            Dashboard.processPluginConfigurationUpdateResult(r);
+            ApiClient.ajax({ type: 'POST', url: ApiClient.getUrl('Dial/Discovery/Refresh') });
+          });
+        });
+        return false;
+      });
+    })();
+  </script>
+</div>
+</body>
+</html>

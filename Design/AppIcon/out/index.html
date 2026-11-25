@@ -1,0 +1,24 @@
+<!doctype html><meta charset="utf-8"><title>Dial icons</title>
+<body style="font:16px system-ui;padding:24px"><p id="log">Rendering…</p><script>
+const jobs = [{"name": "AppIcon-Light", "w": 1024, "h": 1024}, {"name": "AppIcon-Dark", "w": 1024, "h": 1024}, {"name": "AppIcon-Tinted", "w": 1024, "h": 1024}, {"name": "Mac-1024", "w": 1024, "h": 1024}, {"name": "Rounded-1024", "w": 1024, "h": 1024}, {"name": "ic_launcher_foreground", "w": 432, "h": 432}, {"name": "ic_launcher_monochrome", "w": 432, "h": 432}, {"name": "tv_banner", "w": 640, "h": 360}, {"name": "og", "w": 1200, "h": 630}], log = document.getElementById("log");
+const dataURL = b => new Promise(r => { const f = new FileReader(); f.onload = () => r(f.result); f.readAsDataURL(b); });
+(async () => {
+  let css = await (await fetch("https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@1,125,800;1,125,900&family=Space+Mono:wght@700&display=swap")).text();
+  for (const u of [...new Set([...css.matchAll(/url\((https:[^)]+)\)/g)].map(m => m[1]))])
+    css = css.split(u).join(await dataURL(await (await fetch(u)).blob()));
+  for (const j of jobs) {
+    const text = (await (await fetch(j.name + ".svg")).text()).replace("/*FONTS*/", css);
+    const img = new Image();
+    img.src = URL.createObjectURL(new Blob([text], { type: "image/svg+xml" }));
+    await img.decode();
+    await new Promise(r => setTimeout(r, 150));
+    const c = Object.assign(document.createElement("canvas"), { width: j.w, height: j.h });
+    c.getContext("2d").drawImage(img, 0, 0, j.w, j.h);
+    const png = await new Promise(r => c.toBlob(r, "image/png"));
+    await fetch("save/" + j.name + ".png", { method: "POST", body: png });
+    log.textContent = "Saved " + j.name + ".png";
+  }
+  await fetch("done", { method: "POST" });
+  log.textContent = "Done: " + jobs.length + " images. You can close this tab.";
+})().catch(e => { log.textContent = "Failed: " + e; });
+</script>

@@ -1,0 +1,21 @@
+name: Plugin
+
+on:
+  push:
+    paths: ["Plugin/**", ".github/workflows/plugin.yml"]
+  pull_request:
+    paths: ["Plugin/**"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+      - run: dotnet build -c Release Plugin
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Dial.Plugin
+          path: Plugin/bin/Release/net10.0/Dial.Plugin.dll

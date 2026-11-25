@@ -1,0 +1,90 @@
+name: Dial
+options:
+  bundleIdPrefix: com.nodescraper
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  Dial:
+    type: application
+    platform: iOS
+    sources:
+      - path: Dial
+      - path: Shared
+    dependencies:
+      - target: DialWidget
+        embed: true
+        platformFilter: iOS
+    info:
+      path: Dial/Info.plist
+      properties:
+        CFBundleDisplayName: Dial
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        UILaunchScreen: {}
+        UIBackgroundModes: [audio]
+        # Dial only uses the system's own encryption (TLS), so no export paperwork is needed.
+        ITSAppUsesNonExemptEncryption: false
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        LSApplicationCategoryType: public.app-category.music
+        CFBundleURLTypes:
+          - CFBundleURLName: com.nodescraper.dial
+            CFBundleURLSchemes: [dial]
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: true
+        NSLocalNetworkUsageDescription: Dial connects to your Jellyfin server on your home network.
+        # "Hey Siri, play Ariana Grande on Dial": handled inside the app (see SiriMedia.swift).
+        NSSiriUsageDescription: Siri can play any artist, album, song, playlist or genre from your library in Dial.
+        INIntentsSupported: [INPlayMediaIntent]
+        INSupportedMediaCategories: [INMediaCategoryMusic]
+    settings:
+      base:
+        DEVELOPMENT_TEAM: SX4A7T7RQ7
+        PRODUCT_BUNDLE_IDENTIFIER: com.nodescraper.dial
+        # 1 iPhone, 2 iPad, 6 Mac (Catalyst with real Mac controls, "Optimize for Mac").
+        TARGETED_DEVICE_FAMILY: "1,2,6"
+        SUPPORTS_MACCATALYST: YES
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
+        DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER: NO
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        "CODE_SIGN_ENTITLEMENTS[sdk=macosx*]": Dial/Dial-Mac.entitlements
+        "CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]": Dial/Dial-iOS.entitlements
+        # CarPlay is switched on in the simulator only until Apple approves the carplay-audio entitlement for this app
+        # (then add it to Dial-iOS.entitlements, see docs/CARPLAY.md).
+        "CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]": Dial/Dial-iOS-Simulator.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_STYLE: Automatic
+  DialWidget:
+    type: app-extension
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: DialWidget
+      - path: Shared
+    info:
+      path: DialWidget/Info.plist
+      properties:
+        CFBundleDisplayName: Dial
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        DEVELOPMENT_TEAM: SX4A7T7RQ7
+        PRODUCT_BUNDLE_IDENTIFIER: com.nodescraper.dial.Widget
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_ENTITLEMENTS: DialWidget/DialWidget.entitlements
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SUPPORTS_MACCATALYST: NO
+        SKIP_INSTALL: YES
