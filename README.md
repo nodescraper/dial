@@ -115,7 +115,7 @@ The **Dial plugin** is optional. It powers Discovery and the mixtapes, and build
 
 ## Quick start
 
-1. **Have a Jellyfin server with music in it.** New to this? Start with [docs/SERVER-SETUP.md](docs/SERVER-SETUP.md). Good tags matter: see [Digitising your music](docs/DIGITISING.md).
+1. **Have a Jellyfin server with music in it.** New to this? Start with [docs/SERVER-SETUP.md](docs/SERVER-SETUP.md).
 2. **Install the helpers you want.** Each one unlocks something:
 
    | Jellyfin plugin | What it gives Dial |
@@ -138,15 +138,6 @@ The **Dial plugin** is optional. It powers Discovery and the mixtapes, and build
 - **Concerts:** get a free key at [developer.ticketmaster.com](https://developer.ticketmaster.com/), then add it and a country code on the Dial plugin's settings page.
 - **Away from home:** put Jellyfin behind a reverse proxy with HTTPS, or use a private network such as Tailscale. Do not expose it bare.
 
-## Digitise your own music
-
-Dial is for music you own. Ripping CDs, capturing vinyl and tagging it properly is what makes everything above work well. The full guide is **[docs/DIGITISING.md](docs/DIGITISING.md)**.
-
-- Rip CDs to **FLAC** with a verified ripper (XLD, Exact Audio Copy, whipper).
-- Tag everything with **MusicBrainz Picard**, so every file carries its MusicBrainz IDs.
-- Keep one folder per album: `Artist/Album (Year)/01 Title.flac`, with a `cover.jpg`.
-- Back it up: three copies, two kinds of media, one of them off site.
-
 ## Repository layout
 
 | Path | What |
@@ -156,7 +147,7 @@ Dial is for music you own. Ripping CDs, capturing vinyl and tagging it properly 
 | `AndroidTV/` | The Android TV app (`DialTV`) and the shared Android code it builds on (`DialAndroid`) |
 | `Plugin/` | The Jellyfin server plugin for Discovery and the mixtapes (C#, .NET) |
 | `Design/`, `Website/` | App icon sources and the project website |
-| `docs/` | Guides: [server](docs/SERVER-SETUP.md), [plugin](docs/PLUGIN.md), [digitising](docs/DIGITISING.md), [build](docs/BUILD.md), [architecture](docs/ARCHITECTURE.md) |
+| `docs/` | Guides: [server](docs/SERVER-SETUP.md), [plugin](docs/PLUGIN.md), [build](docs/BUILD.md), [architecture](docs/ARCHITECTURE.md) |
 
 ## Status
 

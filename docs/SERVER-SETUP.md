@@ -25,7 +25,7 @@ services:
 docker compose up -d
 ```
 
-Open `http://<server>:8096`, create your account, and add your music folder as a **Music** library (see [Digitising your music](DIGITISING.md) for tagging and layout).
+Open `http://<server>:8096`, create your account, and add your music folder as a **Music** library.
 
 Turn on **Quick Connect** (Dashboard → General) if you want to sign in to Dial without typing a password.
 

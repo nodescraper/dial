@@ -5,7 +5,7 @@ Thanks for looking. Dial is a personal project that is opening up, so the proces
 ## Ways to help
 
 - **Try it and report** what breaks, with your Jellyfin version, device and what you expected. Screenshots help.
-- **Improve the docs**, especially the [digitising guide](docs/DIGITISING.md) and [server setup](docs/SERVER-SETUP.md).
+- **Improve the docs**, especially the [server setup](docs/SERVER-SETUP.md).
 - **Fix a bug or build a feature.** For anything bigger than a small fix, open an issue first so we agree on the direction.
 
 ## Ground rules
