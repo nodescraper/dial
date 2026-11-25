@@ -15,8 +15,8 @@ android {
         applicationId = "com.nodescraper.dial"
         minSdk = 29
         targetSdk = 36
-        versionCode = 32
-        versionName = "0.32"
+        versionCode = 33
+        versionName = "0.1"
     }
 
     // Release signing: put your upload key's details in keystore.properties next to the settings file (see docs/STORE.md).

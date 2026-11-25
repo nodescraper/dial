@@ -18,7 +18,7 @@ All bundle IDs use your developer name: **`com.nodescraper.dial`** (iPhone, iPad
 
 ## Apple (iPhone, iPad, Mac)
 
-Version **1.0 (1)**, set by `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` in `project.yml`. Bump the build number for every upload.
+Version **0.1 (1)**, set by `MARKETING_VERSION` and `CURRENT_PROJECT_VERSION` in `project.yml`. Bump the build number for every upload.
 
 ```bash
 xcodegen generate
@@ -49,7 +49,7 @@ Data collected: **None**. Tracking: **No**. (The app only talks to your own serv
 
 ## Android phone and Android TV
 
-Version **0.15 (15)** phone, **0.19 (19)** TV. Raise `versionCode` for every upload (`app/build.gradle.kts`).
+Version **0.1** on every platform. Raise `versionCode` for every upload (`app/build.gradle.kts`).
 
 ### Make an upload key (once)
 

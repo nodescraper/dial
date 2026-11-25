@@ -19,8 +19,8 @@ android {
         applicationId = "com.nodescraper.dial.tv"
         minSdk = 29
         targetSdk = 36
-        versionCode = 34
-        versionName = "0.34"
+        versionCode = 35
+        versionName = "0.1"
     }
 
     // Release signing: put your upload key's details in keystore.properties next to the settings file (see docs/STORE.md).
