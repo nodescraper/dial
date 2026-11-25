@@ -154,6 +154,15 @@ fun TvHome() {
     val data = rememberTvLoad("home") { HomeData(it.recentAlbums(12), it.recentlyPlayed(24), it.favoriteAlbums()) }
     // The splash waits for these: once Home's rows have arrived it can go.
     LaunchedEffect(data) { if (data != null) TvBoot.homeReady = true }
+    // Cache the covers Home is about to show, so the splash can wait for them and the rows open with pictures.
+    val context = androidx.compose.ui.platform.LocalContext.current
+    LaunchedEffect(data) {
+        val c = client ?: return@LaunchedEffect
+        val d = data ?: return@LaunchedEffect
+        val urls = (d.added.map { c.imageUrl(it.id, 280) } + d.favorites.map { c.imageUrl(it.id, 280) } +
+            d.played.map { c.imageUrl(it.imageItemId, 280) }).filterNotNull()
+        warmCovers(context, urls)
+    }
     var mixes by remember { mutableStateOf(MixCatalog.latest ?: MixSections()) }
     LaunchedEffect(client) {
         val c = client ?: return@LaunchedEffect

@@ -349,6 +349,13 @@ fun TvSettings() {
         Text("Signed in to ${client?.server ?: ""}", style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
         if (downloads.isNotEmpty()) TvDeleteButton("Remove All Downloads", "Remove all downloads?",
             "The songs stay on your server; only the copies on this TV go.", onDelete = { app.downloads.deleteAll() }, onDone = {})
+        // The startup screen waits for Home's covers (the first start is slower, and the rows then open with pictures).
+        val context = androidx.compose.ui.platform.LocalContext.current
+        var longStart by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf(longStartupEnabled(context)) }
+        TvButton(if (longStart) "Longer startup screen: On" else "Longer startup screen: Off", primary = false) {
+            longStart = !longStart
+            setLongStartup(context, longStart)
+        }
         TvButton("Sign out", primary = false) { app.session.signOut() }
     }
 }
