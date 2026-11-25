@@ -13,7 +13,7 @@
         "changelog": "First public release: Discovery feed, made-for-you mixtapes, the shared wishlist and the plugin status page.",
         "targetAbi": "12.4.0.0",
         "sourceUrl": "https://github.com/nodescraper/dial/releases/download/plugin-v0.1.0.0/dial_0.1.0.0.zip",
-        "checksum": "fb8e2c5864b9d3b8a89715862e89ea22",
+        "checksum": "c93acb69845775ffbbfce03cab34ae34",
         "timestamp": "2026-11-25T13:47:00Z"
       }
     ]
